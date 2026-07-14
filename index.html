@@ -1,246 +1,102 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>GMube Edu</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Cairo', sans-serif;
-      background: #0a1a0a;
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .bg {
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(135deg, #0a1a0a 0%, #1B5E20 50%, #2E7D32 100%);
-      z-index: 0;
-    }
-    .bg::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at 30% 40%, rgba(76,175,80,0.08) 0%, transparent 50%),
-                  radial-gradient(circle at 70% 60%, rgba(255,255,255,0.03) 0%, transparent 50%);
-      animation: bgMove 20s ease-in-out infinite;
-    }
-    @keyframes bgMove {
-      0%, 100% { transform: translate(0, 0); }
-      50% { transform: translate(-2%, 2%); }
-    }
-    .card {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 40px 32px;
-      max-width: 380px;
-      width: 100%;
-    }
-    .icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 18px;
-    }
-    .icon svg {
-      width: 40px;
-      height: 40px;
-    }
-    h1 {
-      font-size: 28px;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 6px;
-      letter-spacing: 0.5px;
-    }
-    .tagline {
-      color: rgba(255,255,255,0.5);
-      font-size: 14px;
-      margin-bottom: 32px;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #4CAF50;
-      color: #fff;
-      border: none;
-      border-radius: 14px;
-      padding: 16px 36px;
-      font-family: 'Cairo', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 24px rgba(76,175,80,0.3);
-    }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 32px rgba(76,175,80,0.4);
-    }
-    .btn:active {
-      transform: scale(0.97);
-    }
-    .btn svg {
-      width: 20px;
-      height: 20px;
-    }
-    .sub {
-      margin-top: 24px;
-      color: rgba(255,255,255,0.3);
-      font-size: 12px;
-    }
-    .sub a {
-      color: #4CAF50;
-      text-decoration: none;
-    }
-    .fallback-msg {
-      margin-top: 20px;
-      padding: 14px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.06);
-      font-size: 13px;
-      color: rgba(255,255,255,0.5);
-      display: none;
-    }
-    .fallback-msg.visible {
-      display: block;
-    }
-    .spinner {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      border: 2px solid rgba(255,255,255,0.2);
-      border-top-color: #4CAF50;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      vertical-align: middle;
-      margin-left: 8px;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-    .features {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 28px;
-      flex-wrap: wrap;
-    }
-    .feature {
-      text-align: center;
-      color: rgba(255,255,255,0.4);
-      font-size: 11px;
-    }
-    .feature svg {
-      width: 20px;
-      height: 20px;
-      margin-bottom: 6px;
-      opacity: 0.4;
-    }
-  </style>
+  <meta name="description" content="منصة GMube Edu التعليمية الجزائرية - دروس، كتب، اختبارات">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <!-- Google Fonts: Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Feather Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+  <!-- Appwrite SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/appwrite@16/dist/iife/sdk.min.js"></script>
+
+  <!-- Plyr (video player) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.css">
+  <script src="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.min.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="bg"></div>
-  <div class="card" id="app">
-    <div class="icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="1.5">
-        <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
-        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
-        <path d="M12 6v7"/>
-        <path d="M9 9l3-3 3 3"/>
-      </svg>
+
+<div id="app-shell">
+  <div id="app-view">
+    <!-- Pages render here -->
+    <div style="display:flex;align-items:center;justify-content:center;height:100vh">
+      <div class="spinner"></div>
     </div>
-    <h1>GMube Edu</h1>
-    <p class="tagline">المنصة التعليمية</p>
-    <a class="btn" id="downloadBtn" href="https://expo.dev/artifacts/eas/mDMOUZLlo3kN55BI0GaUTaJxO9daZp8BSrU9DJC7bik.apk">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-        <polyline points="7 10 12 15 17 10"/>
-        <line x1="12" y1="15" x2="12" y2="3"/>
-      </svg>
-      تحميل التطبيق
-    </a>
-    <div class="features">
-      <div class="feature">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <polygon points="23 7 16 12 23 17 23 7"/>
-          <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-        </svg>
-        دروس فيديو
-      </div>
-      <div class="feature">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-          <circle cx="9" cy="7" r="4"/>
-        </svg>
-        أساتذة
-      </div>
-      <div class="feature">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M12 20h9"/>
-          <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
-        </svg>
-        تقييم
-      </div>
-      <div class="feature">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
-          <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
-        </svg>
-        مشاركة
-      </div>
-    </div>
-    <div class="fallback-msg" id="fallbackMsg">
-      <span class="spinner"></span>
-      جاري فتح التطبيق...
-    </div>
-    <p class="sub">
-      <a href="https://mhm979929-alt.github.io/privacy/">سياسة الخصوصية</a>
-      &nbsp;·&nbsp;
-      الإصدار 1.0.1
-    </p>
   </div>
 
-  <script>
-    // Get video ID from hash: #/watch/123
-    const hash = location.hash.replace(/^#\/?/, '');
-    const match = hash.match(/watch\/(\d+)/);
-    const videoId = match ? match[1] : null;
+  <!-- Bottom Navigation -->
+  <nav id="bottom-nav">
+    <button class="nav-item active" data-page="home">
+      <i data-feather="home"></i>
+      <span>الرئيسية</span>
+    </button>
+    <button class="nav-item" data-page="teachers">
+      <i data-feather="users"></i>
+      <span>الأساتذة</span>
+    </button>
+    <button class="nav-item" data-page="books">
+      <i data-feather="book"></i>
+      <span>الكتب</span>
+    </button>
+    <button class="nav-item" data-page="tests">
+      <i data-feather="check-square"></i>
+      <span>اختبارات</span>
+    </button>
+    <button class="nav-item" data-page="profile">
+      <i data-feather="user"></i>
+      <span>حسابي</span>
+    </button>
+  </nav>
+</div>
 
-    if (videoId) {
-      const msg = document.getElementById('fallbackMsg');
-      msg.classList.add('visible');
+<!-- JS: Config first -->
+<script src="js/config.js"></script>
 
-      // Try to open the app via custom scheme
-      setTimeout(() => {
-        window.location.href = `gmubeedu://watch/${videoId}`;
-      }, 300);
+<!-- JS: API layer -->
+<script src="js/api.js"></script>
 
-      // If app doesn't open in 3 seconds, show download option
-      setTimeout(() => {
-        msg.classList.remove('visible');
-      }, 3000);
-    }
-  </script>
+<!-- JS: Auth -->
+<script src="js/auth.js"></script>
+
+<!-- JS: Utilities -->
+<script src="js/utils.js"></script>
+
+<!-- JS: Router -->
+<script src="js/router.js"></script>
+
+<!-- JS: Pages -->
+<script src="js/pages/home.js"></script>
+<script src="js/pages/teachers.js"></script>
+<script src="js/pages/books.js"></script>
+<script src="js/pages/tests.js"></script>
+<script src="js/pages/profile.js"></script>
+<script src="js/pages/login.js"></script>
+<script src="js/pages/watch.js"></script>
+<script src="js/pages/subject.js"></script>
+<script src="js/pages/channel.js"></script>
+<script src="js/pages/playlist.js"></script>
+<script src="js/pages/notifications.js"></script>
+<script src="js/pages/take-test.js"></script>
+
+<!-- JS: App bootstrap -->
+<script src="js/app.js"></script>
+
+<!-- Init Feather Icons -->
+<script>feather.replace();</script>
+
 </body>
 </html>
